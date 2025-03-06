@@ -1,12 +1,22 @@
-## Hi there 👋
+<div align="center">
 
-<!--
+# Chhirolya Technologies | Open Source
+> ✨ Empowering Lives, Every Step of the Way
 
-**Here are some ideas to get you started:**
+![Company Animation](img/chhirolya-research.png)
 
-🙋‍♀️ A short introduction - what is your organization all about?
-🌈 Contribution guidelines - how can the community get involved?
-👩‍💻 Useful resources - where can the community find your docs? Is there anything else the community should know?
-🍿 Fun facts - what does your team eat for breakfast?
-🧙 Remember, you can do mighty things with the power of [Markdown](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
--->
+Chhirolya Technologies leverages Open Source to provide customers with options, cutting-edge technology, and a sense of community through its products and services.
+
+</div>
+
+## Get Involved 🫱🏻
+Right now, open communities are building amazing software together, and there are excellent "good first issue" opportunities, if you're looking to get involved.
+
+## About Us 
+We see every challenge as an opportunity to build something extraordinary. Our mission is to simplify your life, so you can focus on achieving your dreams and living life to its fullest.
+
+We are here to support you at every step, creating possibilities where none seemed to exist and helping you shape a brighter, more rewarding future.
+
+<div align="center">
+<img src="img/hand-shake.png" style="max-width: 100%; height: auto;" alt="Get Involved" />
+</div>
