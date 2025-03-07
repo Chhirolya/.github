@@ -4,7 +4,7 @@
 
 ![Company Animation](img/chhirolya-research.png)
 
-Chhirolya Technologies leverages Open Source to provide customers with options, cutting-edge technology, and a sense of community through its products and services.
+<b> "Chhirolya Technologies leverages Open Source to provide customers with options, cutting-edge technology, and a sense of community through its products and services." </b>
 
 </div>
 
@@ -20,6 +20,5 @@ We are here to support you at every step, creating possibilities where none seem
 <img src="img/hand-shake.png" style="max-width: 100%; height: auto;" alt="Get Involved" />
 </div>
 
-``` 
-If you have any questions or need help, please don't hesitate to reach out. We are always ready to support you every step of the way. 🤗
-```
+---
+> If you have any questions or need help, please don't hesitate to reach out. We are always ready to support you every step of the way. 🤗
