@@ -4,8 +4,8 @@
 
 ![Company Animation](img/chhirolya-research.png)
 
-<b> "Chhirolya Technologies leverages Open Source to provide customers with options, cutting-edge technology, and a sense of community through its products and services." </b>
-
+<b> "Chhirolya Technologies leverages Open Source to provide customers with options, cutting-edge technology, and a sense of community through its products and services." </b> \- Prince Chhirolya (Founder)
+ 
 </div>
 
 ## Get Involved 🤗
@@ -22,3 +22,5 @@ We are here to support you at every step, creating possibilities where none seem
 
 ---
 > If you have any questions or need help, please don't hesitate to reach out. We are always ready to support you every step of the way. 🤗
+
+<div align="center"> ❤️ Open Source</div>
