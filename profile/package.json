@@ -1,0 +1,10 @@
+{
+  "name": "readme-battleship",
+  "version": "1.0.0",
+  "description": "Community Battleship game played through GitHub Issues and README",
+  "scripts": {
+    "new-game": "node init-game.js",
+    "fire": "node process-shot.js"
+  },
+  "license": "MIT"
+}

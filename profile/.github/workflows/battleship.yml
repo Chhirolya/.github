@@ -1,0 +1,98 @@
+name: Battleship — Process Shot
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  fire:
+    # Only run for issues with "fire" or "new game" in the title
+    if: |
+      startsWith(github.event.issue.title, 'fire ') ||
+      startsWith(github.event.issue.title, 'Fire ') ||
+      github.event.issue.title == 'new game' ||
+      github.event.issue.title == 'New Game'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Parse coordinate from issue title
+        id: parse
+        run: |
+          TITLE="${{ github.event.issue.title }}"
+          # Extract the coordinate part after "fire "
+          if [[ "$TITLE" == "new game" || "$TITLE" == "New Game" ]]; then
+            echo "coord=NEW" >> $GITHUB_OUTPUT
+          else
+            COORD=$(echo "$TITLE" | sed 's/^[Ff]ire //' | tr '[:lower:]' '[:upper:]' | xargs)
+            echo "coord=$COORD" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Process the shot
+        id: shot
+        env:
+          GITHUB_ACTOR: ${{ github.event.issue.user.login }}
+        run: |
+          node process-shot.js "${{ steps.parse.outputs.coord }}" 2>&1 | tee shot-result.txt
+          echo "result=$(cat shot-result.txt | head -1)" >> $GITHUB_OUTPUT
+
+      - name: Commit updated README and game state
+        run: |
+          git config user.name  "Battleship Bot"
+          git config user.email "actions@github.com"
+          git add README.md game-state.json
+          git diff --cached --quiet || git commit -m "🎯 @${{ github.event.issue.user.login }} fired at ${{ steps.parse.outputs.coord }}"
+          git push
+
+      - name: Close issue with result comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const result = fs.readFileSync('shot-result.txt', 'utf8').trim();
+            const coord  = '${{ steps.parse.outputs.coord }}';
+            const actor  = context.payload.issue.user.login;
+
+            let emoji = result.includes('HIT') ? '💥' : result.includes('Miss') ? '🌊' : '🎯';
+            let body = `Hey @${actor}!\n\n${emoji} **${result}**\n\n`;
+
+            if (result.includes('SUNK')) {
+              body += `🎉 You sank a ship!\n\n`;
+            }
+            if (result.includes('ALL SHIPS SUNK')) {
+              body += `🏆 **AMAZING! You sank the last ship and won the game!** A new game has started.\n\n`;
+            }
+
+            body += `[→ View the updated board](../blob/main/README.md)\n\n`;
+            body += `_Closing this issue automatically. Open a new one to fire again!_`;
+
+            await github.rest.issues.createComment({
+              owner:    context.repo.owner,
+              repo:     context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body,
+            });
+
+            await github.rest.issues.update({
+              owner:    context.repo.owner,
+              repo:     context.repo.repo,
+              issue_number: context.payload.issue.number,
+              state: 'closed',
+            });
+
+            await github.rest.issues.addLabels({
+              owner:    context.repo.owner,
+              repo:     context.repo.repo,
+              issue_number: context.payload.issue.number,
+              labels: ['battleship'],
+            });
