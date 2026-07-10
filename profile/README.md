@@ -12,6 +12,12 @@
 
 Right now, open communities are building amazing software together, and there are excellent "good first issue" opportunities, if you're looking to get involved.
 
+✌️ Open Source Projects
+  <ol>
+    <li> [CT] <a href="#" target="_blank">WOLF - CT (World Online Library Free) < / > </a> -- Description add soon...</li>
+    <li> [CT] <a href="#" target="_blank">SkyRocket DevHub < / > </a> -- Description add soon...</li>
+  </ol>
+
 ## About Us 👋
 
 We see every challenge as an opportunity to build something extraordinary. Our mission is to simplify your life, so you can focus on achieving your dreams and living life to its fullest.
